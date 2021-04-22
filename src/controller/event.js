@@ -28,7 +28,7 @@ module.exports = {
       ) {
         return res.status(400).json({
           success: false,
-          message: `FIELD CAN'T BE EMPTY`,
+          message: `INPUT FIELD CAN'T BE EMPTY`,
         });
       }
       if (note.trim().length < 50) {
@@ -40,7 +40,6 @@ module.exports = {
       const data = {
         ...req.body,
         images: req.file === undefined ? null : req.file.filename,
-        date: new Date(),
       };
 
       const result = await postEvent(data);
@@ -50,6 +49,7 @@ module.exports = {
         result,
       });
     } catch (err) {
+      console.log(err.message);
       res.status(404).json({
         success: false,
         message: err.message,
