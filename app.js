@@ -4,6 +4,8 @@ const api = require("./src/navigation");
 const cors = require("cors");
 
 require("dotenv").config();
+
+app.use(express.static("uploads"));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
